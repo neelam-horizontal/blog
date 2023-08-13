@@ -4,7 +4,6 @@ import Image from 'next/image';
 import moment from 'moment';
 import Link from 'next/link';
 
-// import { grpahCMSImageLoader } from '../util';
 import { getRecentPosts, getSimilarPosts } from '../services';
 
 const PostWidget = ({ categories, slug }) => {
@@ -31,7 +30,6 @@ const PostWidget = ({ categories, slug }) => {
         <div key={index} className="flex items-center w-full mb-4">
           <div className="w-16 flex-none">
             <img
-              // loader={grpahCMSImageLoader}
               alt={post.title}
               height={60}
               width={60}
