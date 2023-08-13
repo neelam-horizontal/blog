@@ -33,8 +33,6 @@ const PostWidget = ({ categories, slug }) => {
             <img
               // loader={grpahCMSImageLoader}
               alt={post.title}
-              // height="60px"
-              // width="60px"
               height={60}
               width={60}
               unoptimized
@@ -57,13 +55,3 @@ const PostWidget = ({ categories, slug }) => {
 };
 
 export default PostWidget;
-
-// import React from 'react'
-
-// const PostWidget = () => {
-//   return (
-//     <div>PostWidget</div>
-//   )
-// }
-
-// export default PostWidget

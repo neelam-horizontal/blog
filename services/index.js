@@ -186,40 +186,40 @@ export const getFeaturedPosts = async () => {
 
 // ===============================
 
-export const getAdjacentPosts = async (createdAt, slug) => {
-  const query = gql`
-    query GetAdjacentPosts($createdAt: DateTime!,$slug:String!) {
-      next:posts(
-        first: 1
-        orderBy: createdAt_ASC
-        where: {slug_not: $slug, AND: {createdAt_gte: $createdAt}}
-      ) {
-        title
-        featuredImage {
-          url
-        }
-        createdAt
-        slug
-      }
-      previous:posts(
-        first: 1
-        orderBy: createdAt_DESC
-        where: {slug_not: $slug, AND: {createdAt_lte: $createdAt}}
-      ) {
-        title
-        featuredImage {
-          url
-        }
-        createdAt
-        slug
-      }
-    }
-  `;
+// export const getAdjacentPosts = async (createdAt, slug) => {
+//   const query = gql`
+//     query GetAdjacentPosts($createdAt: DateTime!,$slug:String!) {
+//       next:posts(
+//         first: 1
+//         orderBy: createdAt_ASC
+//         where: {slug_not: $slug, AND: {createdAt_gte: $createdAt}}
+//       ) {
+//         title
+//         featuredImage {
+//           url
+//         }
+//         createdAt
+//         slug
+//       }
+//       previous:posts(
+//         first: 1
+//         orderBy: createdAt_DESC
+//         where: {slug_not: $slug, AND: {createdAt_lte: $createdAt}}
+//       ) {
+//         title
+//         featuredImage {
+//           url
+//         }
+//         createdAt
+//         slug
+//       }
+//     }
+//   `;
 
-  const result = await request(graphqlAPI, query, { slug, createdAt });
+//   const result = await request(graphqlAPI, query, { slug, createdAt });
 
-  return { next: result.next[0], previous: result.previous[0] };
-};
+//   return { next: result.next[0], previous: result.previous[0] };
+// };
 
 export const getCategoryPost = async (slug) => {
   const query = gql`

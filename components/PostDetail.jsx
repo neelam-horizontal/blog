@@ -54,12 +54,9 @@ const PostDetail = ({ post }) => {
         </div>
         <div className="px-4 lg:px-0">
           <div className="flex items-center mb-8 w-full">
-            {/* <div className="hidden md:flex items-center justify-center lg:mb-0 lg:w-auto mr-8"> */}
             <div className="flex items-center mb-4 lg:mb-0 w-full lg:w-auto mr-8">
               <img
                 alt={post.author.name}
-                // height="30px"
-                // width="30px"
                 width={30}
                 height={30}
                 className="align-middle rounded-full"
@@ -88,14 +85,3 @@ const PostDetail = ({ post }) => {
 };
 
 export default PostDetail;
-
-
-// import React from 'react'
-
-// const PostDetail = () => {
-//   return (
-//     <div>PostDetail</div>
-//   )
-// }
-
-// export default PostDetail

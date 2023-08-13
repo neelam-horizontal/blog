@@ -40,9 +40,28 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 <!-- installation -->
+npx create-next-app ./
 
-npx create-react-app
-<!-- incomplete -->
+Need to install the following packages:
+  create-next-app@13.4.13
+Ok to proceed? (y) y
+? Would you like to use TypeScript? » No ? Would you like to use TypeScript? » No √ Would you like to use TypeScript? ... No / 
+√ Would you like to use ESLint? ...  / Yes
+√ Would you like to use Tailwind CSS? ...  / Yes
+√ Would you like to use `src/` directory? ... No / 
+√ Would you like to use App Router? (recommended) ... No / 
+√ Would you like to customize the default import alias? ... No / 
+
+Installing dependencies:
+- react
+- react-dom
+- next
+- tailwindcss
+- postcss
+- autoprefixer
+- eslint
+- eslint-config-next
+
 
 <!-- graphQl -->
 -- account

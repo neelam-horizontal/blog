@@ -9,34 +9,34 @@ const CommentsForm = ({ slug }) => {
   const nameEl = useRef();
   const emailEl = useRef();
   const storeDataEl = useRef();
-  // const [formData, setFormData] = useState({ name: null, email: null, comment: null, storeData: false });
+  const [formData, setFormData] = useState({ name: null, email: null, comment: null, storeData: false });
 
   useEffect(() => {
-    nameEl.current.value = window.localStorage.getItem('name');
-    emailEl.current.value = window.localStorage.getItem('email');
-    // setLocalStorage(window.localStorage);
-    // const initalFormData = {
-    //   name: window.localStorage.getItem('name'),
-    //   email: window.localStorage.getItem('email'),
-    //   storeData: window.localStorage.getItem('name') || window.localStorage.getItem('email'),
-    // };
-    // setFormData(initalFormData);
+    // nameEl.current.value = window.localStorage.getItem('name');
+    // emailEl.current.value = window.localStorage.getItem('email');
+    setLocalStorage(window.localStorage);
+    const initalFormData = {
+      name: window.localStorage.getItem('name'),
+      email: window.localStorage.getItem('email'),
+      storeData: window.localStorage.getItem('name') || window.localStorage.getItem('email'),
+    };
+    setFormData(initalFormData);
   }, []);
 
-  // const onInputChange = (e) => {
-  //   const { target } = e;
-  //   if (target.type === 'checkbox') {
-  //     setFormData((prevState) => ({
-  //       ...prevState,
-  //       [target.name]: target.checked,
-  //     }));
-  //   } else {
-  //     setFormData((prevState) => ({
-  //       ...prevState,
-  //       [target.name]: target.value,
-  //     }));
-  //   }
-  // };
+  const onInputChange = (e) => {
+    const { target } = e;
+    if (target.type === 'checkbox') {
+      setFormData((prevState) => ({
+        ...prevState,
+        [target.name]: target.checked,
+      }));
+    } else {
+      setFormData((prevState) => ({
+        ...prevState,
+        [target.name]: target.value,
+      }));
+    }
+  };
 
   const handlePostSubmission = () => {
     setError(false);

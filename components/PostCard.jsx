@@ -8,16 +8,6 @@ import Link from "next/link";
 
 const PostCard = ({ post }) => (
   <div className="bg-white shadow-lg rounded-lg p-0 lg:p-8 pb-12 mb-8">
-    {/* <div className="relative shadow-md inline-block w-full h-60 lg:h-80 mb-6">
-      <Image
-        unoptimized
-        // loader={grpahCMSImageLoader}
-        alt={post.title}
-        className="shadow-lg rounded-t-lg lg:rounded-lg"
-        layout="fill"
-        src={post.featuredImage.url}
-      />
-    </div> */}
     <div className="relative overflow-hidden shadow-md pb-80 mb-6">
       <img
         src={post.featuredImage.url}
@@ -35,10 +25,8 @@ const PostCard = ({ post }) => (
           unoptimized
           // loader={grpahCMSImageLoader}
           alt={post.author.name}
-          // height="30px"
           height={30}
           width={30}
-          // width="30px"
           className="align-middle rounded-full"
           src={post.author.photo.url}
         />
@@ -80,13 +68,3 @@ const PostCard = ({ post }) => (
 );
 
 export default PostCard;
-
-// import React from 'react'
-
-// const PostCard = () => {
-//   return (
-//     <div>PostCard</div>
-//   )
-// }
-
-// export default PostCard
