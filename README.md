@@ -36,3 +36,26 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+<!-- installation -->
+
+npx create-react-app
+<!-- incomplete -->
+
+<!-- graphQl -->
+-- account
+-- create new project
+-- 
+
+-- API Playground => 
+-- settings =>
+    a. environment key
+    b. Access -> API Access -> content permission -> yes, initialize defaults
+    c. ACCESS -> API Access -> Permanent Auth Tokens {for submitting comments on db} -> Add token {create new token} -> name: dev
+    https://app.hygraph.com/4f10e5d7eb604f3bb6ed550f578976ba/master/settings/api-access/token/e2f3a26a8d3845eb897b6b0cfc88bc7f
+
+    c. ACCESS -> API Access -> Permanent Auth Tokens {for submitting comments on db} -> Add token {create new token} -> name: dev -> edit -> Add permission -> Model All {check all} -> Add
+
+-- Allow comment: Content -> 
