@@ -5,48 +5,31 @@ const CommentsForm = ({ slug }) => {
   const [error, setError] = useState(false);
   const [localStorage, setLocalStorage] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+
   const commentEl = useRef();
   const nameEl = useRef();
   const emailEl = useRef();
   const storeDataEl = useRef();
-  const [formData, setFormData] = useState({ name: null, email: null, comment: null, storeData: false });
 
   useEffect(() => {
-    // nameEl.current.value = window.localStorage.getItem('name');
-    // emailEl.current.value = window.localStorage.getItem('email');
-    setLocalStorage(window.localStorage);
-    const initalFormData = {
-      name: window.localStorage.getItem('name'),
-      email: window.localStorage.getItem('email'),
-      storeData: window.localStorage.getItem('name') || window.localStorage.getItem('email'),
-    };
-    setFormData(initalFormData);
-  }, []);
+      nameEl.current.value = window.localStorage.getItem('name');
+      emailEl.current.value = window.localStorage.getItem('email');
+      // setLocalStorage(window.localStorage);
+      // const initalFormData = {
+      //   name: window.localStorage.getItem('name'),
+      //   email: window.localStorage.getItem('email'),
+      //   storeData: window.localStorage.getItem('name') || window.localStorage.getItem('email'),
+      // };
+      // setFormData(initalFormData);
+    }, []);
 
-  const onInputChange = (e) => {
-    const { target } = e;
-    if (target.type === 'checkbox') {
-      setFormData((prevState) => ({
-        ...prevState,
-        [target.name]: target.checked,
-      }));
-    } else {
-      setFormData((prevState) => ({
-        ...prevState,
-        [target.name]: target.value,
-      }));
-    }
-  };
-
-  const handlePostSubmission = () => {
+const handleCommentSubmission = () => {
     setError(false);
+
     // const { comment } = commentEl.current;
     // const { name } = nameEl.current;
     // const { email } = emailEl.current;
-    // if(!commentEl.current.value || !nameEl.current.value || !emailEl.current.value )
-    //   const { name, email, comment, storeData } = formData;
-    
-    
+    // if(!commentEl.current.value || !nameEl.current.value || !emailEl.current.value ) {}
     const { value: comment } = commentEl.current;
     const { value: name } = nameEl.current;
     const { value: email } = emailEl.current;
@@ -63,7 +46,7 @@ const CommentsForm = ({ slug }) => {
       slug,
     };
 
-    if (storeData) {
+      if (storeData) {
       window.localStorage.setItem('name', name);
       window.localStorage.setItem('email', email);
     } else {
@@ -107,7 +90,27 @@ const CommentsForm = ({ slug }) => {
     //       }, 3000);
     //     }
     //   });
-  };
+  // };
+}
+  
+  // const [formData, setFormData] = useState({ name: null, email: null, comment: null, storeData: false });
+
+  // const onInputChange = (e) => {
+  //   const { target } = e;
+  //   if (target.type === 'checkbox') {
+  //     setFormData((prevState) => ({
+  //       ...prevState,
+  //       [target.name]: target.checked,
+  //     }));
+  //   } else {
+  //     setFormData((prevState) => ({
+  //       ...prevState,
+  //       [target.name]: target.value,
+  //     }));
+  //   }
+  // };
+
+  // const handlePostSubmission = () => {
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
@@ -147,7 +150,7 @@ const CommentsForm = ({ slug }) => {
       <div className="grid grid-cols-1 gap-4 mb-4">
         <div>
           <input
-          ref={storeDataEl}
+            ref={storeDataEl}
             // checked={formData.storeData}
             // onChange={onInputChange}
             type="checkbox"
@@ -167,7 +170,8 @@ const CommentsForm = ({ slug }) => {
       <div className="mt-8">
         <button
           type="button"
-          onClick={handlePostSubmission}
+          // onClick={handlePostSubmission}
+          onClick={handleCommentSubmission}
           className="transition duration-500 ease hover:bg-indigo-900 inline-block bg-pink-600 text-lg font-medium rounded-full text-white px-8 py-3 cursor-pointer"
         >
           Post Comment
@@ -183,13 +187,3 @@ const CommentsForm = ({ slug }) => {
 };
 
 export default CommentsForm;
-
-// import React from 'react'
-
-// const CommentsForm = () => {
-//   return (
-//     <div>CommentsForm</div>
-//   )
-// }
-
-// export default CommentsForm

@@ -7,29 +7,29 @@ const PostDetail = ({ post }) => {
   const getContentFragment = (index, text, obj, type) => {
     let modifiedText = text;
 
-    if (obj) {
-      if (obj.bold) {
-        modifiedText = <b key={index}>{text}</b>;
-      }
+    // if (obj) {
+    //   if (obj.bold) {
+    //     modifiedText = <b key={index}>{text}</b>;
+    //   }
 
-      if (obj.italic) {
-        modifiedText = <em key={index}>{text}</em>;
-      }
+    //   if (obj.italic) {
+    //     modifiedText = <em key={index}>{text}</em>;
+    //   }
 
-      if (obj.underline) {
-        modifiedText = <u key={index}>{text}</u>;
-      }
-    }
+    //   if (obj.underline) {
+    //     modifiedText = <u key={index}>{text}</u>;
+    //   }
+    // }
 
     switch (type) {
-      case "heading-three":
-        return (
-          <h3 key={index} className="text-xl font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h3>
-        );
+      // case "heading-three":
+      //   return (
+      //     <h3 key={index} className="text-xl font-semibold mb-4">
+      //       {modifiedText.map((item, i) => (
+      //         <React.Fragment key={i}>{item}</React.Fragment>
+      //       ))}
+      //     </h3>
+      //   );
       case "paragraph":
         return (
           <p key={index} className="mb-8">
@@ -38,14 +38,14 @@ const PostDetail = ({ post }) => {
             ))}
           </p>
         );
-      case "heading-four":
-        return (
-          <h4 key={index} className="text-md font-semibold mb-4">
-            {modifiedText.map((item, i) => (
-              <React.Fragment key={i}>{item}</React.Fragment>
-            ))}
-          </h4>
-        );
+      // case "heading-four":
+      //   return (
+      //     <h4 key={index} className="text-md font-semibold mb-4">
+      //       {modifiedText.map((item, i) => (
+      //         <React.Fragment key={i}>{item}</React.Fragment>
+      //       ))}
+      //     </h4>
+      //   );
       case "image":
         return (
           <img
@@ -106,6 +106,7 @@ const PostDetail = ({ post }) => {
             </div>
           </div>
           <h1 className="mb-8 text-3xl font-semibold">{post.title}</h1>
+          {/* {console.log(post.content.raw.children)} */}
           {post.content.raw.children.map((typeObj, index) => {
             const children = typeObj.children.map((item, itemindex) =>
               getContentFragment(itemindex, item.text, item)

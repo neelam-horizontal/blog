@@ -60,27 +60,27 @@ export const getRecentPosts = async () => {
   return result.posts;
 };
 
-export const getSimilarPosts = async (categories, slug) => {
-  const query = gql`
-    query GetPostDetails($slug: String!, $categories: [String!]) {
-      posts(
-        where: {slug_not: $slug, AND: {categories_some: {slug_in: $categories}}}
-        last: 3
-      ) {
-        title
-        featuredImage {
-          url
-        }
-        createdAt
-        slug
-      }
-    }
-  `;
+// export const getSimilarPosts = async (categories, slug) => {
+//   const query = gql`
+//     query GetPostDetails($slug: String!, $categories: [String!]) {
+//       posts(
+//         where: {slug_not: $slug, AND: {categories_some: {slug_in: $categories}}}
+//         last: 3
+//       ) {
+//         title
+//         featuredImage {
+//           url
+//         }
+//         createdAt
+//         slug
+//       }
+//     }
+//   `;
 
-  const result = await request(graphqlAPI, query, { slug, categories });
+//   const result = await request(graphqlAPI, query, { slug, categories });
 
-  return result.posts;
-};
+//   return result.posts;
+// };
 
 export const getCategories = async () => {
   const query = gql`
@@ -143,6 +143,18 @@ export const submitComment = async (obj) => {
   return result.json();
 };
 
+export const submitCommentwithLikes = async (obj) => {
+  const result = await fetch('/api/comments', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(obj),
+  });
+
+  return result.json();
+};
+
 export const getComments = async (slug) => {
   const query = gql`
     query GetComments($slug: String!) {
@@ -157,6 +169,51 @@ export const getComments = async (slug) => {
   const result = await request(graphqlAPI, query, { slug });
 
   return result.comments;
+};
+
+export const submitReplies = async (commentId, replyData) => {
+  const mutation = gql`
+    mutation SubmitReplies($commentId: ID!, $replyData: ReplyInput!) {
+      createReply(data: { comment: { connect: { id: $commentId } }, ...$replyData }) {
+        id
+        createdAt
+        reply
+      }
+    }
+  `;
+//   const mutation = gql`
+//   mutation SubmitReplies($commentId: ID!, $replyData: ReplyInput!) {
+//     createReply(data: { comment: { connect: { id: $commentId } }, ...$replyData }) {
+//       id
+//       createdAt
+//       reply
+//       author: $replyData.author
+//       content: $replyData.content
+//       timestamp: $replyData.timestamp
+//     }
+//   }
+// `;
+
+
+  const result = await request(graphqlAPI, mutation, { commentId, replyData });
+
+  return result.createReply;
+};
+
+export const getReplies = async (commentId) => {
+  const query = gql`
+    query GetReplies($commentId: ID!) {
+      replies(where: { comment: { id: $commentId } }) {
+        id
+        createdAt
+        reply
+      }
+    }
+  `;
+
+  const result = await request(graphqlAPI, query, { commentId });
+
+  return result.replies;
 };
 
 export const getCategoryPost = async (slug) => {
