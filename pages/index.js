@@ -12,7 +12,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ posts }) {
   return (
-    <main className={`container mx-auto px-10 mb-8 ${inter.className}`}>
+    <main
+      className={`container mx-auto px-10 mb-8 
+    `}
+    >
+      {/* // ${inter?.className} */}
       <Head>
         <title>Blog Post</title>
         <link rel="icon" href="/favicon.ico" />
@@ -39,6 +43,6 @@ export async function getStaticProps() {
   const posts = (await getPosts()) || [];
 
   return {
-    props: { posts }
-  }
+    props: { posts },
+  };
 }
