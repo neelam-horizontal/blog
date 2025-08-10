@@ -12,10 +12,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ posts }) {
   return (
-    <main
-      className={`container mx-auto px-10 mb-8 
-    `}
-    >
+    <main className={`container mx-auto px-10 mb-8 `}>
       {/* // ${inter?.className} */}
       <Head>
         <title>Blog Post</title>
